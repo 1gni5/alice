@@ -1,0 +1,27 @@
+{
+    "metadata": {
+        "plugins" : {
+            "reddit": {
+                "subreddit": "learn_python",
+                "no_posts": 10
+            }
+        }
+    },
+
+    {% if not dry_run %}
+
+    "content": [
+        {% for post in posts %}
+        {
+            "subreddit": "{{post.subreddit}}", 
+            "text": "{{post.text}}"
+        }{% if not loop.last %} , {% endif %}
+        {% endfor %}
+    ]
+
+    {% else %}
+
+    "content": []
+
+    {% endif %}
+}
