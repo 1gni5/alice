@@ -3,11 +3,12 @@ from pathlib import Path
 
 from jinja2 import FileSystemLoader, Environment
 
+
 def build_context(metadata: dict) -> dict:
     """Build the context for template rendering."""
 
     context = dict()
-    plugins = metadata.get('plugins', {})
+    plugins = metadata.get("plugins", {})
 
     # Get context for every installed plugin
     for name, args in plugins.items():
@@ -15,6 +16,7 @@ def build_context(metadata: dict) -> dict:
         context |= module.context_builder(**args)
 
     return context
+
 
 def render(filename: str, context: dict) -> str:
     """Fill-in script template with given context."""
