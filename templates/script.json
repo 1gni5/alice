@@ -2,8 +2,8 @@
     "metadata": {
         "plugins" : {
             "reddit": {
-                "subreddit": "learn_python",
-                "no_posts": 10
+                "subreddit": "relationship_advice",
+                "no_posts": 5
             }
         }
     },
@@ -13,7 +13,7 @@
     "content": [
         {% for post in posts %}
         {
-            "subreddit": "{{post.subreddit}}", 
+            "title": "{{post.title}}",
             "text": "{{post.text}}"
         }{% if not loop.last %} , {% endif %}
         {% endfor %}
